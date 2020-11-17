@@ -6,3 +6,16 @@ import App from './App';
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
+/*
+
+In React Components can be written in two ways :
+    a) Class Components
+    b) Functional Components 
+
+1) Styling Components in React
+
+2) props and propTypes
+
+
+
+*/
