@@ -16,6 +16,8 @@ In React Components can be written in two ways :
 
 2) props and propTypes
 
+3) state
 
+4) Looping Components (map)
 
 */
