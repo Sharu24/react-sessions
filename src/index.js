@@ -21,6 +21,8 @@ In React Components can be written in two ways :
 4) Looping Components (map)
 5) <App /> = React.createElement('App',null);
 
-
+6) Life Cycle of components (componentDidMount())
+7) setState()
+8) axios
 
 */
