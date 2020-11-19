@@ -10,7 +10,9 @@ class App extends React.Component {
         return (
             <div>
                 <NavBar />
-                <Users />
+                <div className="container">
+                    <Users />
+                </div>
             </div>
         )
     }

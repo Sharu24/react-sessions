@@ -10,7 +10,7 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 In React Components can be written in two ways :
     a) Class Components
-    b) Functional Components 
+    b) Functional Components
 
 1) Styling Components in React
 
@@ -19,5 +19,6 @@ In React Components can be written in two ways :
 3) state
 
 4) Looping Components (map)
+5) <App /> = React.createElement()
 
 */
