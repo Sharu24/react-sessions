@@ -19,6 +19,8 @@ In React Components can be written in two ways :
 3) state
 
 4) Looping Components (map)
-5) <App /> = React.createElement()
+5) <App /> = React.createElement('App',null);
+
+
 
 */
