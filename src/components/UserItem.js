@@ -1,8 +1,7 @@
 import React from 'react';
 
 //Stateless Components can be written as Functional Components
-function UserItem(props) {
-    const { login, avatar_url, html_url } = props.user;
+function UserItem({ user: { login, avatar_url, html_url } }) {
     return (
         <div className="card text-center">
             <img src={avatar_url} alt="" className="round-img" style={{ width: '120px' }} />
