@@ -3,7 +3,8 @@ import axios from 'axios';
 import './App.css';
 import NavBar from './components/NavBar';
 import Users from './components/Users';
- 
+import Search from './components/Search';
+
 class App extends React.Component {
     state = {
         users: [],
@@ -25,8 +26,8 @@ class App extends React.Component {
             <div>
                 <NavBar />
                 <div className="container">
+                    <Search />
                     <Users users={this.state.users} loading={this.state.loading} />
-
                 </div>
             </div>
         )
