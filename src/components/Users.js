@@ -3,18 +3,15 @@ import React from 'react';
 import UserItem from './UserItem';
 import Loading from './Loading';
 
-
-const Users = (props) => {
-    if (props.loading) {
+function Users({ users, loading }) {
+    if (loading) {
         return <Loading />;
     } else {
         return <div style={userStyle}>
-            {props.users.map((user) => (
+            {users.map((user) => (
                 <UserItem key={user.id} user={user} />
             ))}
         </div>
-
-
     }
 }
 
