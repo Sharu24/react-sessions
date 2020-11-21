@@ -3,6 +3,7 @@ import React from 'react';
 import UserItem from './UserItem';
 import Loading from './Loading';
 
+
 const Users = (props) => {
     if (props.loading) {
         return <Loading />;
@@ -12,6 +13,8 @@ const Users = (props) => {
                 <UserItem key={user.id} user={user} />
             ))}
         </div>
+
+
     }
 }
 
