@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import NavBar from './components/NavBar';
 import Users from './components/Users';
-
+ 
 class App extends React.Component {
     state = {
         users: [],
