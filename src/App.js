@@ -47,7 +47,12 @@ class App extends React.Component {
                 msg: msg,
                 type: type
             }
-        })
+        });
+        setTimeout(() => {
+            this.setState({
+                alert: null
+            });
+        }, 5000);
     }
     render() {
         return (
