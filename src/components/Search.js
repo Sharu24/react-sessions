@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Search extends Component {
     state = {
         text: ""
+    }
+    static propTypes = {
+        searchUsers: PropTypes.func.isRequired
     }
     onChange = (event) => {
         // console.log(event.target.value);
@@ -10,10 +14,17 @@ class Search extends Component {
             text: event.target.value
         })
     }
+    onSubmit = (event) => {
+        event.preventDefault();
+        this.props.searchUsers(this.state.text);
+        this.setState({
+            text: ''
+        })
+    }
     render() {
         return (
             <div>
-                <form className="form">
+                <form className="form" onSubmit={this.onSubmit}>
                     <input
                         type="text"
                         name="text"
@@ -22,6 +33,7 @@ class Search extends Component {
                         placeholder="Search GitHub User ..." />
                     <input type="submit" value="Search" className="btn btn-dark btn-block" />
                 </form>
+                <button className="btn btn-light btn-block" onClick={this.props.clearUsers}>Clear Users</button>
             </div>
         )
     }
