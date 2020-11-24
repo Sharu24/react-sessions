@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import axios from 'axios';
 //React Router
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import NavBar from './components/NavBar';
@@ -65,27 +65,29 @@ class App extends React.Component {
                     <NavBar />
                     <div className="container">
                         <Alert alert={this.state.alert} />
-                        <Route
-                            path="/"
-                            render={() => (
-                                <Fragment>
-                                    <Search searchUsers={this.searchUsers}
-                                        clearUsers={this.clearUsers}
-                                        showClear={this.state.users.length > 0 ? true : false}
-                                        setAlert={this.setAlert}
-                                    />
-                                    <Users users={this.state.users}
-                                        loading={this.state.loading}
-                                    />
-                                </Fragment>
-                            )}
-                        />
-                        <Route
-                            path="/about"
-                            render={() => (
-                                <About />
-                            )}
-                        />
+                        <Switch>
+                            <Route
+                                exact path="/"
+                                render={() => (
+                                    <Fragment>
+                                        <Search searchUsers={this.searchUsers}
+                                            clearUsers={this.clearUsers}
+                                            showClear={this.state.users.length > 0 ? true : false}
+                                            setAlert={this.setAlert}
+                                        />
+                                        <Users users={this.state.users}
+                                            loading={this.state.loading}
+                                        />
+                                    </Fragment>
+                                )}
+                            />
+                            <Route
+                                exact path="/about"
+                                render={() => (
+                                    <About />
+                                )}
+                            />
+                        </Switch>
                     </div>
                 </div>
             </Router>
