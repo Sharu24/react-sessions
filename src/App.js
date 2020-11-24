@@ -9,6 +9,8 @@ import Users from './components/Users';
 import Search from './components/Search';
 import Alert from './components/Alert';
 import About from './components/About';
+import User from './components/User';
+
 
 class App extends React.Component {
     constructor() {
@@ -98,6 +100,18 @@ class App extends React.Component {
                                 exact path="/about"
                                 render={() => (
                                     <About />
+                                )}
+                            />
+                            <Route
+                                exact
+                                path="/user/:login"
+                                render={(props) => (
+                                    <User
+                                        {...props}
+                                        getUser={this.getUser}
+                                        user={this.state.user}
+                                        loading={this.state.loading}
+                                    />
                                 )}
                             />
                         </Switch>
