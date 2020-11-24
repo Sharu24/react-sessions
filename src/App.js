@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import axios from 'axios';
+//React Router
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import './App.css';
 import NavBar from './components/NavBar';
 import Users from './components/Users';
 import Search from './components/Search';
 import Alert from './components/Alert';
+import About from './components/About';
 
 class App extends React.Component {
     constructor() {
@@ -56,20 +60,35 @@ class App extends React.Component {
     }
     render() {
         return (
-            <div>
-                <NavBar />
-                <div className="container">
-                    <Alert alert={this.state.alert} />
-                    <Search searchUsers={this.searchUsers}
-                        clearUsers={this.clearUsers}
-                        showClear={this.state.users.length > 0 ? true : false}
-                        setAlert={this.setAlert}
-                    />
-                    <Users users={this.state.users}
-                        loading={this.state.loading}
-                    />
+            <Router>
+                <div>
+                    <NavBar />
+                    <div className="container">
+                        <Alert alert={this.state.alert} />
+                        <Route
+                            path="/"
+                            render={() => (
+                                <Fragment>
+                                    <Search searchUsers={this.searchUsers}
+                                        clearUsers={this.clearUsers}
+                                        showClear={this.state.users.length > 0 ? true : false}
+                                        setAlert={this.setAlert}
+                                    />
+                                    <Users users={this.state.users}
+                                        loading={this.state.loading}
+                                    />
+                                </Fragment>
+                            )}
+                        />
+                        <Route
+                            path="/about"
+                            render={() => (
+                                <About />
+                            )}
+                        />
+                    </div>
                 </div>
-            </div>
+            </Router>
         )
     }
 
