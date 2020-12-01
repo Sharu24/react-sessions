@@ -7,7 +7,7 @@ Using React Hooks, You can replace RCC with RFC
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 function Dummy() {
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState({});
     //Similar to ComponentDidMount, we have useEffect Hook 
     useEffect(() => {
         async function fetchData() {
