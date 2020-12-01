@@ -39,7 +39,7 @@ class About extends Component {
                 <h1>React Forms</h1>
                 <p>This is a form submission in React and Express</p>
                 <div className="card">
-                    <form action="/action_page.php" onSubmit={this.onSubmit}>
+                    <form action="/" onSubmit={this.onSubmit}>
                         <label htmlFor="fname">First name</label>
                         <input
                             type="text"
