@@ -31,13 +31,7 @@ function App() {
         fetchData();
     }, []);
 
-    //Search User Function which is going as props to Search Component
-    const searchUsers = async (text) => {
-        setLoading(true);
-        const res = await axios.get(`https://api.github.com/search/users?q=${text}`);
-        setUsers(res.data.items);
-        setLoading(false);
-    }
+   
 
     //Get Single User Data
     const getUser = async (username) => {
@@ -76,7 +70,7 @@ function App() {
                                 exact path="/"
                                 render={() => (
                                     <Fragment>
-                                        <Search searchUsers={searchUsers}
+                                        <Search 
                                             clearUsers={clearUsers}
                                             showClear={users.length > 0 ? true : false}
                                             setAlert={showAlert}

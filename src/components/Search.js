@@ -35,7 +35,6 @@ function Search({ searchUsers, setAlert, showClear, clearUsers }) {
 
 
 Search.propTypes = {
-    searchUsers: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
     showClear: PropTypes.bool.isRequired,
     setAlert: PropTypes.func.isRequired
