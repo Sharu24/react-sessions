@@ -4,33 +4,55 @@ import githubContext from "./githubContext";
 
 import GithubReducer from "./githubReducer";
 
-import { SEARCH_USERS, SET_LOADING, CLEAR_USERS } from "../types"; //Actions (Action Types)
+import {
+  SEARCH_USERS,
+  SET_LOADING,
+  CLEAR_USERS,
+  GET_USER,
+  SET_REPOS
+} from "../types"; //Actions (Action Types)
 
-const GitHubState = (props) => {
+const GitHubState = props => {
   const initialState = {
     users: [],
     user: {},
     repos: [],
-    loading: false,
+    loading: false
   };
 
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
   //Search User Function which is going as props to Search Component
-  const searchUsers = async (text) => {
+  const searchUsers = async text => {
     setLoading();
     const res = await axios.get(
       `https://api.github.com/search/users?q=${text}`
     );
     dispatch({
       type: SEARCH_USERS,
-      payload: res.data.items,
+      payload: res.data.items
     });
+  };
+
+  //Get Single User Data
+  const getUser = async username => {
+    setLoading();
+    const res = await axios.get(`https://api.github.com/users/${username}`);
+    dispatch({ type: GET_USER, payload: res.data });
   };
 
   const setLoading = () => dispatch({ type: SET_LOADING });
 
   const clearUsers = () => dispatch({ type: CLEAR_USERS });
+
+  //Get User Repos
+  const getUserRepos = async username => {
+    setLoading();
+    const res = await axios.get(
+      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc`
+    );
+    dispatch({ type: SET_REPOS, payload: res.data });
+  };
 
   return (
     <githubContext.Provider
@@ -41,6 +63,8 @@ const GitHubState = (props) => {
         loading: state.loading,
         searchUsers,
         clearUsers,
+        getUser,
+        getUserRepos
       }}
     >
       {props.children}

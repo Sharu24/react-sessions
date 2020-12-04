@@ -31,24 +31,6 @@ function App() {
     fetchData();
   }, []);
 
-  //Get Single User Data
-  const getUser = async (username) => {
-    setLoading(true);
-    const res = await axios.get(`https://api.github.com/users/${username}`);
-    setUser(res.data);
-    setLoading(false);
-  };
-
-  //Get User Repos
-  const getUserRepos = async (username) => {
-    setLoading(true);
-    const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc`
-    );
-    setRepos(res.data);
-    setLoading(false);
-  };
-
   const showAlert = (msg, type) => {
     setAlert({ msg: msg, type: type });
     setTimeout(() => {
@@ -72,25 +54,12 @@ function App() {
                       showClear={users.length > 0 ? true : false}
                       setAlert={showAlert}
                     />
-                    <Users users={users} loading={loading} />
+                    <Users />
                   </Fragment>
                 )}
               />
-              <Route exact path="/about" render={() => <About />} />
-              <Route
-                exact
-                path="/user/:login"
-                render={(props) => (
-                  <User
-                    {...props}
-                    getUser={getUser}
-                    user={user}
-                    loading={loading}
-                    repos={repos}
-                    getUserRepos={getUserRepos}
-                  />
-                )}
-              />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/user/:login" component={User} />} />
             </Switch>
           </div>
         </div>
