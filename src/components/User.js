@@ -1,5 +1,4 @@
 import React, { useEffect, Fragment, useContext } from "react";
-import PropTypes from "prop-types";
 
 //Import Loading Component
 import Loading from "./Loading";
@@ -12,7 +11,7 @@ import githubContext from "../context/GitHub/githubContext";
 function User({ match }) {
   const GitHubContext = useContext(githubContext);
 
-  const { user, loading, getUser, repos, getUserRepos } = GitHubContext;
+  const { user, loading, getUser, getUserRepos } = GitHubContext;
 
   useEffect(() => {
     getUser(match.params.login);
